@@ -72,7 +72,7 @@ exports.run = async (client, msg, args) => {
         ctx.font = '25px Impact';
         ctx.textAlign = "right";
         ctx.fillStyle = `#f0fc00`;
-        ctx.fillText(`Legend Place`, 205, 55);
+        ctx.fillText(`∼ Saudade Mudita ∼`, 320, 55);
         ctx.font = '20px Impact';
         ctx.textAlign = "right";  
         ctx.fillText(`${xp || 0} / 150 XP`, 670, 100);
