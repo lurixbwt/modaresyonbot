@@ -56,7 +56,7 @@ exports.conf = {
 };
 
 exports.help = {
-  name: 'seviyesıra',
+  name: 'sıralama',
   description: 'Seviye sisteminin sunucudaki liderlik tablosunu gĂ¶sterir.',
-  usage: 'liderlik'
+  usage: 'sıralama'
 };

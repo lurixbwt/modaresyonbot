@@ -95,12 +95,12 @@ exports.run = async (client, msg, args) => {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['seviye'],
+  aliases: ['lvl'],
   permLevel: 0,
 };
 
 exports.help = {
-  name: 'seviyem',
+  name: 'lvl',
   description: '',
-  usage: 'seviye'
+  usage: 'lvl'
 };
