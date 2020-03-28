@@ -100,7 +100,7 @@ exports.conf = {
 };
 
 exports.help = {
-  name: 'seviye',
+  name: 'seviyem',
   description: '',
   usage: 'seviye'
 };
