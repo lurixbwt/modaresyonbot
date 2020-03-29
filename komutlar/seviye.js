@@ -100,7 +100,7 @@ exports.conf = {
 };
 
 exports.help = {
-  name: 'lvl',
+  name: 'seviye',
   description: '',
-  usage: 'lvl'
+  usage: 'seviye'
 };
