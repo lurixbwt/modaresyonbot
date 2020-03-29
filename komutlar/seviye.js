@@ -79,7 +79,7 @@ exports.run = async (client, msg, args) => {
   ctx.fillStyle = `#fcfdff`;
   ctx.font = 'bold 28px Impact';
         ctx.textAlign = "left";
-        ctx.fillText(`${u.tag}`, 195, 150)
+        ctx.fillText(`${u.username}`, 195, 150)
         ctx.beginPath();
         ctx.lineWidth = 8;
   ctx.fill()
