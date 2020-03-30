@@ -3,6 +3,7 @@ const request = require('node-superfetch');
 const db = require('quick.db');
 
 exports.run = async (client, msg, args) => {
+    msg.delete();
       let u = msg.mentions.users.first() || msg.author;
 
         if(u.bot === true) {

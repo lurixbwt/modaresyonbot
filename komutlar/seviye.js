@@ -3,9 +3,10 @@ const request = require('node-superfetch');
 const db = require('quick.db');
 const { stripIndents } = require('common-tags');
 const snekfetch = require("snekfetch");
+const superagent = require('superagent');
 
 exports.run = async (client, msg, args) => {
-  
+  msg.delete();
   let u = msg.mentions.users.first() || msg.author;
 
         if(u.bot === true) {
@@ -25,7 +26,10 @@ exports.run = async (client, msg, args) => {
         const { body } = await request.get(avatarURL);
         const avatar = await Canvas.loadImage(body);
   
-  ctx.fillStyle = "#000000";
+  let image = 'https://i.pinimg.com/originals/89/5c/cc/895cccce862751373e5b14dc11e3bbd7.jpg';
+  let {body: background} = await superagent.get(image);
+  
+  ctx.fillStyle = image;
   ctx.fill()
         ctx.fillRect(25, 20, 700, 200)  
   
