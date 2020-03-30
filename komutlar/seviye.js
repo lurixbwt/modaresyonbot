@@ -25,7 +25,7 @@ exports.run = async (client, msg, args) => {
         const { body } = await request.get(avatarURL);
         const avatar = await Canvas.loadImage(body);
   
-  ctx.fillStyle = "";
+  ctx.fillStyle = "#000000";
   ctx.fill()
         ctx.fillRect(25, 20, 700, 200)  
   
@@ -79,9 +79,9 @@ exports.run = async (client, msg, args) => {
         ctx.textAlign = "right";
         ctx.fillText(`BILGILER`, 170, 60);
         ctx.fillText(`RESIM`, 670, 50);
-        ctx.font = '25px Impact';
+        ctx.font = 'bold 25px Impact';
         ctx.textAlign = "right";
-        ctx.fillStyle = `#f0fc00`;
+        ctx.fillStyle = `#FFFFFF`;
         ctx.fillText(`∼ Saudade Mudita ∼`, 500, 55);
   ctx.fillStyle = `#fcfdff`;
   ctx.font = 'bold 20px Impact';
