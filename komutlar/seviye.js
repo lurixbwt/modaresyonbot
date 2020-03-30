@@ -3,9 +3,11 @@ const request = require('node-superfetch');
 const db = require('quick.db');
 const { stripIndents } = require('common-tags');
 const snekfetch = require("snekfetch");
-const superagent = require('superagent');
 
 exports.run = async (client, msg, args) => {
+  const emoji = client.emojis.get('693972316182282271');
+  if (msg.channel.id !== '693286888341110885') return msg.channel.send(`:no_entry: Bu komutun kullanımı, bu kanalda engellenmiştir.`);
+
   msg.delete();
   let u = msg.mentions.users.first() || msg.author;
 
@@ -26,10 +28,7 @@ exports.run = async (client, msg, args) => {
         const { body } = await request.get(avatarURL);
         const avatar = await Canvas.loadImage(body);
   
-  let image = 'https://i.pinimg.com/originals/89/5c/cc/895cccce862751373e5b14dc11e3bbd7.jpg';
-  let {body: background} = await superagent.get(image);
-  
-  ctx.fillStyle = image;
+  ctx.fillStyle = "#000000";
   ctx.fill()
         ctx.fillRect(25, 20, 700, 200)  
   
