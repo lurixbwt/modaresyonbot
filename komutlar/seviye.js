@@ -39,7 +39,9 @@ exports.run = async (client, msg, args) => {
   
   var xp = db.fetch(`puan_${u.id + msg.guild.id}`);
   var lvl = db.fetch(`seviye_${u.id + msg.guild.id}`);  
-        
+
+        let vUser = msg.guild.member(msg.mentions.users.first());
+        const svo = require('svo-client');
         const emoji = client.emojis.get('694036610093940738');
         let sira = ''
         const sorted = msg.guild.members.filter(u => !u.user.bot).array().sort((a, b) => { return db.fetch(`seviye_${b.user.id + msg.guild.id}`) - db.fetch(`seviye_${a.user.id + msg.guild.id}`) });
@@ -70,7 +72,7 @@ exports.run = async (client, msg, args) => {
         ctx.textAlign = "right";
         ctx.font = '20px Impact';
         ctx.fillStyle = `#f0fc00`;  
-        ctx.fillText(`Seviye: `, 450, 125);
+        ctx.fillText(`Seviye: ${msg.guild.region}`, 450, 125);
         ctx.fillText(`Seviye: ${lvl || 0}`, 150, 125);
         ctx.fillText(`Sıralama: ${sira}`, 160, 95);
         ctx.fillText(`Puan: ${xp || 0} / 150`, 205, 155);
