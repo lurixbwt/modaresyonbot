@@ -39,7 +39,8 @@ exports.run = async (client, msg, args) => {
   
   var xp = db.fetch(`puan_${u.id + msg.guild.id}`);
   var lvl = db.fetch(`seviye_${u.id + msg.guild.id}`);  
-  
+        
+        const emoji = client.emojis.get('694036610093940738');
         let sira = ''
         const sorted = msg.guild.members.filter(u => !u.user.bot).array().sort((a, b) => { return db.fetch(`seviye_${b.user.id + msg.guild.id}`) - db.fetch(`seviye_${a.user.id + msg.guild.id}`) });
         const top10 = sorted.splice(0, msg.guild.members.size)
@@ -53,29 +54,30 @@ exports.run = async (client, msg, args) => {
         var de = 1.6
         ctx.beginPath()
         ctx.fillStyle = "#999999";
-        ctx.arc(257 + 18.5, 125.5 + 18.5 + 36.25, 18.5, 1.5 * Math.PI, 0.5 * Math.PI, true);
+        ctx.arc(257 + 18.5, 40 + 18.5 + 36.25, 18.5, 1.5 * Math.PI, 0.5 * Math.PI, true);
         ctx.fill();
-        ctx.fillRect(257 + 18.5, 125.5 + 36.15, 250 * de, 37.5);
-        ctx.arc(257 + 18.5 + 250 * de, 125.5 + 18.5 + 36.25, 18.75, 1.5 * Math.PI, 0.5 * Math.PI, false);
+        ctx.fillRect(257 + 18.5, 40 + 36.15, 250 * de, 37.5);
+        ctx.arc(257 + 18.5 + 250 * de, 40 + 18.5 + 36.25, 18.75, 1.5 * Math.PI, 0.5 * Math.PI, false);
         ctx.fill();
         ctx.beginPath();
         ctx.fillStyle = `#${re}`;
-        ctx.arc(257 + 18.5, 125.5 + 18.5 + 36.25, 18.5, 1.5 * Math.PI, 0.5 * Math.PI, true);
+        ctx.arc(257 + 18.5, 40 + 18.5 + 36.25, 18.5, 1.5 * Math.PI, 0.5 * Math.PI, true);
         ctx.fill();
-        ctx.fillRect(257 + 18.5, 125.5 + 36.25, xp * de, 37.5);
-        ctx.arc(257 + 18.5 + xp * de, 125.5 + 18.5 + 36.25, 18.75, 1.5 * Math.PI, 0.5 * Math.PI, false);
+        ctx.fillRect(257 + 18.5, 40 + 36.25, xp * de, 37.5);
+        ctx.arc(257 + 18.5 + xp * de, 40 + 18.5 + 36.25, 18.75, 1.5 * Math.PI, 0.5 * Math.PI, false);
         ctx.fill();
         ctx.fillStyle = `#${re}`;
         ctx.font = '28px Impact';
         ctx.textAlign = "right";
-        ctx.fillText(`Sıralama #${sira} | Seviye ${lvl || 0}`, 670, 200);
+        ctx.fillText(`Sıralama #${sira} ⋄ | ⋄ Seviye ${lvl || 0}`, 670, 200);
+        ctx.fillText(`Sıralama #${sira} ⋄ | ⋄ Seviye ${lvl || 0}`, 670, 200);
         ctx.font = '25px Impact';
         ctx.textAlign = "right";
         ctx.fillStyle = `#f0fc00`;
         ctx.fillText(`∼ Saudade Mudita ∼`, 500, 55);
         ctx.font = '20px Impact';
         ctx.textAlign = "right";  
-        ctx.fillText(`${xp || 0} / 150 XP`, 670, 170);
+        ctx.fillText(`${xp || 0} / 150 Puan`, 670, 170);
   ctx.fillStyle = `#fcfdff`;
   ctx.font = 'bold 28px Impact';
         ctx.textAlign = "left";
@@ -86,7 +88,7 @@ exports.run = async (client, msg, args) => {
         ctx.lineWidth = 8;
         ctx.arc(43 + 67, 67 + 67, 67, 0, 2 * Math.PI, false);
     ctx.clip();
-    ctx.drawImage(avatar, 43, 67, 135, 130);
+    ctx.drawImage(avatar, 43, 67, 135, 135);
     
         msg.channel.send({files:[{attachment:canvas.toBuffer(),name:"seviye.png"}]})
   
