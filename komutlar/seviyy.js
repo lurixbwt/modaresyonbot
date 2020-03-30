@@ -68,14 +68,14 @@ exports.run = async (client, msg, args) => {
         ctx.fillStyle = `#${re}`;
         ctx.font = '28px Impact';
         ctx.textAlign = "right";
-        ctx.fillText(`Sıralama #${sira} | Seviye ${lvl || 0}`, 670, 200);
+        ctx.fillText(`Sıralama #${sira} | Seviye ${lvl || 0}`, 670, 70);
         ctx.font = '25px Impact';
         ctx.textAlign = "right";
         ctx.fillStyle = `#f0fc00`;
-        ctx.fillText(`∼ Saudade Mudita ∼`, 500, 55);
+        ctx.fillText(`∼ Saudade Mudita ∼`, 320, 55);
         ctx.font = '20px Impact';
         ctx.textAlign = "right";  
-        ctx.fillText(`${xp || 0} / 150 XP`, 670, 170);
+        ctx.fillText(`${xp || 0} / 150 XP`, 670, 100);
   ctx.fillStyle = `#fcfdff`;
   ctx.font = 'bold 28px Impact';
         ctx.textAlign = "left";
@@ -95,12 +95,12 @@ exports.run = async (client, msg, args) => {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['lvl'],
+  aliases: [''],
   permLevel: 0,
 };
 
 exports.help = {
-  name: 'seviye',
+  name: '',
   description: '',
-  usage: 'seviye'
+  usage: ''
 };
