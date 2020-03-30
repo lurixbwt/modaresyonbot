@@ -54,25 +54,22 @@ exports.run = async (client, msg, args) => {
         var de = 1.6
         ctx.beginPath()
         ctx.fillStyle = "#999999";
-        ctx.arc(257 + 18.5, 130 + 18.5 + 36.25, 18.5, 1.5 * Math.PI, 0.5 * Math.PI, true);
+        ctx.arc(257 + 18.5, 40 + 18.5 + 36.25, 18.5, 1.5 * Math.PI, 0.5 * Math.PI, true);
         ctx.fill();
-        ctx.fillRect(257 + 18.5, 130 + 36.15, 250 * de, 37.5);
-        ctx.arc(257 + 18.5 + 250 * de, 130 + 18.5 + 36.25, 18.75, 1.5 * Math.PI, 0.5 * Math.PI, false);
+        ctx.fillRect(257 + 18.5, 40 + 36.15, 250 * de, 37.5);
+        ctx.arc(257 + 18.5 + 250 * de, 40 + 18.5 + 36.25, 18.75, 1.5 * Math.PI, 0.5 * Math.PI, false);
         ctx.fill();
         ctx.beginPath();
         ctx.fillStyle = `#${re}`;
-        ctx.arc(257 + 18.5, 130 + 18.5 + 36.25, 18.5, 1.5 * Math.PI, 0.5 * Math.PI, true);
+        ctx.arc(257 + 18.5, 40 + 18.5 + 36.25, 18.5, 1.5 * Math.PI, 0.5 * Math.PI, true);
         ctx.fill();
-        ctx.fillRect(257 + 18.5, 130 + 36.25, xp * de, 37.5);
-        ctx.arc(257 + 18.5 + xp * de, 130 + 18.5 + 36.25, 18.75, 1.5 * Math.PI, 0.5 * Math.PI, false);
+        ctx.fillRect(257 + 18.5, 40 + 36.25, xp * de, 37.5);
+        ctx.arc(257 + 18.5 + xp * de, 40 + 18.5 + 36.25, 18.75, 1.5 * Math.PI, 0.5 * Math.PI, false);
         ctx.fill();
         ctx.fillStyle = `#${re}`;
         ctx.font = '28px Impact';
         ctx.textAlign = "right";
-        ctx.fillText(`Seviye ${lvl || 0}`, 180, 130);
-        ctx.fillText(`Sıralama #${sira}`, 215, 100);
-        ctx.fillStyle = `#63fcf3`;
-        ctx.fillText(`Bilgiler`, 170, 60);
+        ctx.fillText(`Sıralama #${sira} ⋄ | ⋄ Seviye ${lvl || 0}`, 670, 200);
         ctx.font = '25px Impact';
         ctx.textAlign = "right";
         ctx.fillStyle = `#f0fc00`;
@@ -88,7 +85,7 @@ exports.run = async (client, msg, args) => {
         ctx.lineWidth = 8;
   ctx.fill()
         ctx.lineWidth = 8;
-        ctx.arc(43 + 67, 10 + 67, 10, 0, 2 * Math.PI, false);
+        ctx.arc(43 + 67, 67 + 67, 67, 0, 2 * Math.PI, false);
     ctx.clip();
     ctx.drawImage(avatar, 43, 67, 135, 135);
     
