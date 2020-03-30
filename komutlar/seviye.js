@@ -3,6 +3,7 @@ const request = require('node-superfetch');
 const db = require('quick.db');
 const { stripIndents } = require('common-tags');
 const snekfetch = require("snekfetch");
+const moment = require('moment');
 
 exports.run = async (client, msg, args) => {
   
@@ -70,8 +71,9 @@ exports.run = async (client, msg, args) => {
         ctx.textAlign = "right";
         ctx.font = '20px Impact';
         ctx.fillStyle = `#f0fc00`;  
-        ctx.fillText(`Seviye: ${lvl || 0}`, 150, 130);
-        ctx.fillText(`Sıralama: ${sira}`, 175, 100);
+        ctx.fillText(`Seviye: ${moment.utc(member.JoinedAt).format('DD.MM.YY')}`, 150, 125);  
+        ctx.fillText(`Seviye: ${lvl || 0}`, 150, 125);
+        ctx.fillText(`Sıralama: ${sira}`, 160, 95);
         ctx.fillStyle = `#63fcf3`;
         ctx.font = '25px Impact';
         ctx.textAlign = "right";
@@ -82,11 +84,11 @@ exports.run = async (client, msg, args) => {
         ctx.fillText(`∼ Saudade Mudita ∼`, 500, 55);
         ctx.font = '20px Impact';
         ctx.textAlign = "right";  
-        ctx.fillText(`Puan: ${xp || 0} / 150`, 190, 160);
+        ctx.fillText(`Puan: ${xp || 0} / 150`, 205, 155);
   ctx.fillStyle = `#fcfdff`;
-  ctx.font = 'bold 28px Impact';
+  ctx.font = 'bold 20px Impact';
         ctx.textAlign = "left";
-        ctx.fillText(`${u.username}`, 195, 150)
+        ctx.fillText(`${u.username}`, 115, 192)
         ctx.beginPath();
         ctx.lineWidth = 8;
   ctx.fill()
