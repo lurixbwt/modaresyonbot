@@ -5,10 +5,9 @@ const { stripIndents } = require('common-tags');
 const snekfetch = require("snekfetch");
 
 exports.run = async (client, msg, args) => {
-  const emoji = client.emojis.get('693972316182282271');
-  if (msg.channel.id !== '693286888341110885') return msg.channel.send(`:no_entry: Bu komutun kullanımı, bu kanalda engellenmiştir.`);
-
   msg.delete();
+  const yasak = client.emojis.get('693976996321165385');
+  if (msg.channel.id !== '693286888341110885') return msg.channel.send(`${yasak} **Bu komutun kullanımı, bu kanalda engellenmiştir.**`).then(m => m.delete(5000));
   let u = msg.mentions.users.first() || msg.author;
 
         if(u.bot === true) {
