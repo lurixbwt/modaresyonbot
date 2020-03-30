@@ -25,7 +25,7 @@ exports.run = async (client, msg, args) => {
         const { body } = await request.get(avatarURL);
         const avatar = await Canvas.loadImage(body);
   
-  ctx.fillStyle = "rgba(0, 0, 0, 0."+g+")";
+  ctx.fillStyle = "";
   ctx.fill()
         ctx.fillRect(25, 20, 700, 200)  
   
@@ -41,7 +41,6 @@ exports.run = async (client, msg, args) => {
   var lvl = db.fetch(`seviye_${u.id + msg.guild.id}`);  
 
         let vUser = msg.guild.member(msg.mentions.users.first());
-        const svo = require('svo-client');
         const emoji = client.emojis.get('694036610093940738');
         let sira = ''
         const sorted = msg.guild.members.filter(u => !u.user.bot).array().sort((a, b) => { return db.fetch(`seviye_${b.user.id + msg.guild.id}`) - db.fetch(`seviye_${a.user.id + msg.guild.id}`) });
@@ -72,14 +71,14 @@ exports.run = async (client, msg, args) => {
         ctx.textAlign = "right";
         ctx.font = '20px Impact';
         ctx.fillStyle = `#f0fc00`;  
-        ctx.fillText(`Seviye: ${msg.guild.region}`, 450, 125);
         ctx.fillText(`Seviye: ${lvl || 0}`, 150, 125);
         ctx.fillText(`Sıralama: ${sira}`, 160, 95);
         ctx.fillText(`Puan: ${xp || 0} / 150`, 205, 155);
         ctx.fillStyle = `#63fcf3`;
         ctx.font = '25px Impact';
         ctx.textAlign = "right";
-        ctx.fillText(`Bilgiler`, 170, 60);
+        ctx.fillText(`BILGILER`, 170, 60);
+        ctx.fillText(`RESIM`, 670, 50);
         ctx.font = '25px Impact';
         ctx.textAlign = "right";
         ctx.fillStyle = `#f0fc00`;
