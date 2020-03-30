@@ -16,7 +16,7 @@ exports.run = async (client, msg, args) => {
         var str = ''
         const sorted = msg.guild.members.filter(u => !u.user.bot).array().sort((a, b) => { return db.fetch(`seviye_${b.user.id + msg.guild.id}`) - db.fetch(`seviye_${a.user.id + msg.guild.id}`) });
         const top10 = sorted.splice(0, msg.guild.members.size)
-        const mappedName = top10.filter(o => !o.bot).map(s => s.user.tag);
+        const mappedName = top10.filter(o => !o.bot).map(s => s.user.id);
         const mappedLevel = top10.filter(o => !o.bot).map(s => db.fetch(`seviye_${s.user.id + msg.guild.id}`) || 0)
 
         const mappedID = top10.map(s => s.user.id);
@@ -24,11 +24,11 @@ exports.run = async (client, msg, args) => {
             var lvl = mappedLevel[i]
       
             if(msg.author.id === mappedID[i]) {
-                str += `[${i + 1}] > ${mappedName[i]}\n  Level: ${lvl} \n\n`
+                str += `[${i + 1}] > <@${mappedName[i]}>\n  Level: ${lvl} \n\n`
             }
 
             if(msg.author.id !== mappedID[i]) {
-                str += `[${i + 1}] > ${mappedName[i]}\n  Level: ${lvl} \n\n`
+                str += `[${i + 1}] > <@${mappedName[i]}>\n  Level: ${lvl} \n\n`
             }
         }
 
