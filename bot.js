@@ -114,7 +114,7 @@ client.on("message", async msg => {
     dba.add(`puan_${msg.author.id + msg.guild.id}`, 5);
   }
 
-  if (dba.fetch(`puan_${msg.author.id + msg.guild.id}`) > 150) {
+  if (dba.fetch(`puan_${msg.author.id + msg.guild.id}`) > 500) {
     msg.reply("Seviye atladınız.");
     dba.add(`seviye_${msg.author.id + msg.guild.id}`, 1);
 
