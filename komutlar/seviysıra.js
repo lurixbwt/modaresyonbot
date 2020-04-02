@@ -45,7 +45,7 @@ exports.run = async (client, msg, args) => {
         }
   
         let wEmbed = new Discord.RichEmbed()
-        .setTitle(`⌘ | Seviye Sistemi`)
+        .setTitle(`♅ | Seviye Sistemi`)
         .setColor('RANDOM')
         .setDescription(`${str}`)
         msg.channel.send(wEmbed)
