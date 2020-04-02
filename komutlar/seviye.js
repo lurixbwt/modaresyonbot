@@ -27,15 +27,15 @@ exports.run = async (client, msg, args) => {
         const { body } = await request.get(avatarURL);
         const avatar = await Canvas.loadImage(body);
   
-  ctx.fillStyle = "#000000";
-  ctx.fill()
-        ctx.fillRect(25, 20, 700, 200)  
+//  ctx.fillStyle = "#000000";
+//  ctx.fill()
+//        ctx.fillRect(25, 20, 700, 200)  
   
   
   
-        ctx.fillStyle = "rgba(0, 0, 0, 0.30)";
-        ctx.fill()
-        ctx.fillRect(0, 0, 750, 240)
+//        ctx.fillStyle = "rgba(0, 0, 0, 0.30)";
+//        ctx.fill()
+//        ctx.fillRect(0, 0, 750, 240)
   
         var re = "db3b3b"
   
@@ -71,7 +71,7 @@ exports.run = async (client, msg, args) => {
         ctx.fill();
         ctx.fillStyle = `#${re}`;
         ctx.textAlign = "right";
-        ctx.font = '20px Impact';
+        ctx.font = '23px Impact';
         ctx.fillStyle = `#f0fc00`;  
         ctx.fillText(`Seviye: ${lvl || 0}`, 150, 125);
         ctx.fillText(`Sıralama: ${sira}`, 160, 95);
