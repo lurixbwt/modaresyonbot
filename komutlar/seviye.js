@@ -73,9 +73,9 @@ exports.run = async (client, msg, args) => {
         ctx.textAlign = "right";
         ctx.font = '23px Impact';
         ctx.fillStyle = `#f0fc00`;  
-        ctx.fillText(`Seviye: ${lvl || 0}`, 150, 125);
+        ctx.fillText(`Seviye: ${lvl || 0}`, 160, 125);
         ctx.fillText(`Sıralama: ${sira}`, 160, 95);
-        ctx.fillText(`Puan: ${xp || 0} / 500`, 205, 155);
+        ctx.fillText(`Puan: ${xp || 0} / 150`, 195, 155);
         ctx.fillStyle = `#63fcf3`;
         ctx.font = '25px Impact';
         ctx.textAlign = "right";

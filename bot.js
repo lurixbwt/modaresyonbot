@@ -111,10 +111,10 @@ client.on("message", async msg => {
   if (msg.author.bot) return;
 
   if (msg.content.length > 7) {
-    dba.add(`puan_${msg.author.id + msg.guild.id}`, 5);
+    dba.add(`puan_${msg.author.id + msg.guild.id}`, 05);
   }
 
-  if (dba.fetch(`puan_${msg.author.id + msg.guild.id}`) > 500) {
+  if (dba.fetch(`puan_${msg.author.id + msg.guild.id}`) > 150) {
     msg.reply("Seviye atladınız.");
     dba.add(`seviye_${msg.author.id + msg.guild.id}`, 1);
 
