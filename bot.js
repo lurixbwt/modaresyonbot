@@ -106,7 +106,6 @@ client.login(ayarlar.token);
 
 
 // NİTRO \\
-
 client.on("ready", async () => {
   setInterval(() => {
   const nitrolar = []
