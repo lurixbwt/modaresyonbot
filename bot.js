@@ -103,14 +103,3 @@ client.on('error', e => {
 });
 
 client.login(ayarlar.token);
-
-
-// NİTRO \\
-client.on("ready", async () => {
-  setInterval(() => {
-  const nitrolar = []
-  const nitroata = nitrolar[Math.floor(Math.random()*nitrolar.length)];
-  client.channels.get("699907499876155462").send(`Nitro Kodu: https://discord.gift/${nitroata}`)
-}, 5000)//milsaniye
-})
-// NİTRO \\

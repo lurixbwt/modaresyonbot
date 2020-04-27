@@ -4,7 +4,7 @@ const db = require('quick.db');
 
 exports.run = async (client, msg, args) => {
   
-  
+  msg.channel.send("Sa");
 };
 exports.conf = {
   enabled: true,
@@ -14,7 +14,7 @@ exports.conf = {
 };
 
 exports.help = {
-  name: 'fsgdsfg4165dsgds',
+  name: 'sa',
   description: 'Seviye sisteminin sunucudaki liderlik tablosunu gĂ¶sterir.',
-  usage: 'fsgdsfg4165dsgds'
+  usage: 'sa'
 };
