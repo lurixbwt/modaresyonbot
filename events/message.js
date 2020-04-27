@@ -1,4 +1,4 @@
-const ayarlar = require('../ayarlar.json');
+const ayarlar = require('../tokenler/token2.json');
 let talkedRecently = new Set();
 module.exports = message => {
   if (talkedRecently.has(message.author.id)) {

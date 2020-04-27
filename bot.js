@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const ayarlar = require('./tokenler/token.json');
+const ayarlar = require('./tokenler/token2.json');
 const chalk = require('chalk');
 const fs = require('fs');
 const moment = require('moment');

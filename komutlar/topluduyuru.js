@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const ayarlar = require('../ayarlar.json');
+const ayarlar = require('../tokenler/token.json');
 
 exports.run = (client, message, args) => {
 if (message.author.id !=420691365777899530 ) { return; }
