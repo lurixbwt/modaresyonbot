@@ -200,13 +200,13 @@ client.on("message", async  msg => {
 // TAG \\
 client.on("userUpdate", async(eski, yeni) => {
   if(eski.username !== yeni.username) {
-  if(!yeni.username.includes("™") && client.guilds.get("703377662743412786").members.get(yeni.id).roles.has("ROL İD")) {
-     client.guilds.get("703377662743412786").members.get(yeni.id).removeRole("ROL İD")
-     client.channels.get('706438740184268821').send(`:broken_heart: ${yeni}, TAG tagını çıkardı!`)
+  if(!yeni.username.includes("™") && client.guilds.get("703377662743412786").members.get(yeni.id).roles.has("706438106399899689")) {
+     client.guilds.get("703377662743412786").members.get(yeni.id).removeRole("706438106399899689")
+     client.channels.get('706438740184268821').send(`:broken_heart: ${yeni}, ™ tagını çıkardı!`)
     }
-     if(yeni.username.includes("™") && !client.guilds.get("703377662743412786").members.get(yeni.id).roles.has("ROL İD")) {
-      client.channels.get('706438740184268821').send(`:heart: ${yeni}, TAG tagını aldı!`)
-      client.guilds.get("703377662743412786").members.get(yeni.id).addRole("ROL ID")
+     if(yeni.username.includes("™") && !client.guilds.get("703377662743412786").members.get(yeni.id).roles.has("706438106399899689")) {
+      client.channels.get('706438740184268821').send(`:heart: ${yeni}, ™ tagını aldı!`)
+      client.guilds.get("703377662743412786").members.get(yeni.id).addRole("706438106399899689")
      }
   }
   })
