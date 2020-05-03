@@ -1,105 +1,39 @@
-const Discord = require('discord.js');
-const client = new Discord.Client();
-const ayarlar = require('./ayarlar.json');
-const chalk = require('chalk');
-const fs = require('fs');
-const moment = require('moment');
-require('./util/eventLoader')(client);
+const { Client } = require("discord.js");
+const BookmanDB = require("bookman");
+const db = require("quick.db");
+const client = new Client();
+const database = new BookmanDB("langData");
 
-var prefix = ayarlar.prefix;
-
-const log = message => {
-  console.log(`[${moment().format('YYYY-MM-DD HH:mm:ss')}] ${message}`);
-};
-
-client.commands = new Discord.Collection();
-client.aliases = new Discord.Collection();
-fs.readdir('./komutlar/', (err, files) => {
-  if (err) console.error(err);
-  log(`${files.length} komut yüklenecek.`);
-  files.forEach(f => {
-    let props = require(`./komutlar/${f}`);
-    log(`Yüklenen komut: ${props.help.name}.`);
-    client.commands.set(props.help.name, props);
-    props.conf.aliases.forEach(alias => {
-      client.aliases.set(alias, props.help.name);
-    });
-  });
+client.on("ready", () => {
+    console.log(client.user.username);
 });
 
-client.reload = command => {
-  return new Promise((resolve, reject) => {
-    try {
-      delete require.cache[require.resolve(`./komutlar/${command}`)];
-      let cmd = require(`./komutlar/${command}`);
-      client.commands.delete(command);
-      client.aliases.forEach((cmd, alias) => {
-        if (cmd === command) client.aliases.delete(alias);
-      });
-      client.commands.set(command, cmd);
-      cmd.conf.aliases.forEach(alias => {
-        client.aliases.set(alias, cmd.help.name);
-      });
-      resolve();
-    } catch (e){
-      reject(e);
-    }
-  });
-};
+client.on("message", message => {
+	let langFile = returnLangFile(message.guild);
+	if (message.content == "test") {
+		message.channel.send(langFile["test_mesajı"]);
+	}
+	if (message.content == "deneme") {
+		message.channel.send(langFile["deneme_başarılı"]);
+	}
+	if (message.content == "dil") {
+		db.has(`lang.${guild.id}`) ? db.get(`lang.${guild.id}`) == "en" ? db.set(`lang.${guild.id}`, "tr") : db.set(`lang.${guild.id}`, "en") : db.set(`lang.${guild.id}`, "en");
+		message.channel.send(langFile["dil_degisti"]);
+	}
 
-client.load = command => {
-  return new Promise((resolve, reject) => {
-    try {
-      let cmd = require(`./komutlar/${command}`);
-      client.commands.set(command, cmd);
-      cmd.conf.aliases.forEach(alias => {
-        client.aliases.set(alias, cmd.help.name);
-      });
-      resolve();
-    } catch (e){
-      reject(e);
-    }
-  });
-};
-
-client.unload = command => {
-  return new Promise((resolve, reject) => {
-    try {
-      delete require.cache[require.resolve(`./komutlar/${command}`)];
-      let cmd = require(`./komutlar/${command}`);
-      client.commands.delete(command);
-      client.aliases.forEach((cmd, alias) => {
-        if (cmd === command) client.aliases.delete(alias);
-      });
-      resolve();
-    } catch (e){
-      reject(e);
-    }
-  });
-};
-
-
-client.elevation = message => {
-  if(!message.guild) {
-	return; }
-  let permlvl = 0;
-  if (message.member.hasPermission("BAN_MEMBERS")) permlvl = 2;
-  if (message.member.hasPermission("ADMINISTRATOR")) permlvl = 3;
-  if (message.author.id === ayarlar.sahip) permlvl = 4;
-  return permlvl;
-};
-
-var regToken = /[\w\d]{24}\.[\w\d]{6}\.[\w\d-_]{27}/g;
-// client.on('debug', e => {
-//   console.log(chalk.bgBlue.green(e.replace(regToken, 'that was redacted')));
-// });
-
-client.on('warn', e => {
-  console.log(chalk.bgYellow(e.replace(regToken, 'that was redacted')));
 });
 
-client.on('error', e => {
-  console.log(chalk.bgRed(e.replace(regToken, 'that was redacted')));
-});
+function returnLangFile(guild) {
+  let lang = database.has(`lang.${guild.id}`)
+    ? database.get(`lang.${guild.id}`)
+    : "tr";
+  if (lang != "en" && lang != "tr") lang = "tr";
+  switch (lang) {
+    case "tr":
+      return require("./lang/tr.json");
+    case "en":
+      return require("./lang/en.json");
+  }
+}
 
-client.login(ayarlar.token);
+client.login("NzAzMzc5MDEzODkyMTc3OTkx.Xq4ELg.o5ru3DW_iGvddtkngKr2Oqu8b-E");

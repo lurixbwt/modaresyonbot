@@ -13,6 +13,7 @@
     "array-sort": "^1.0.0",
     "bad-words": "^3.0.2",
     "body-parser": "^1.18.3",
+    "bookman": "^1.6.4",
     "canvas": "^2.4.1",
     "canvas-constructor": "^3.0.0",
     "canvas-node": "^0.3.23",
