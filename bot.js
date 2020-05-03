@@ -118,7 +118,8 @@ client.on("message", message => {
 		message.channel.send(langFile["deneme_başarılı"]);
 	}
 	if (message.content == "dil") {
-		db.has(`lang.${message.guild.id}`) ? db.get(`lang.${message.guild.id}`) == "en" ? db.set(`lang.${message.guild.id}`, "tr") : db.set(`lang.${message.guild.id}`, "en") : db.set(`lang.${message.guild.id}`, "en");
+		db.has(`lang.${message.guild.id}`) ? db.get(`lang.${message.guild.id}`) == "en" 
+      ? db.set(`lang.${message.guild.id}`, "tr") : db.set(`lang.${message.guild.id}`, "en") : db.set(`lang.${message.guild.id}`, "en");
 		message.channel.send(langFile["dil_degisti"]);
 	}
 
