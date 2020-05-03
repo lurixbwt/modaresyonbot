@@ -169,3 +169,45 @@ client.on("message", async  msg => {
     if (!i) return;
   });
 // REKLAM \\
+
+// ARGO \\
+client.on("message", async  msg => {
+ var i = await db.fetch(`küfür_${msg.guild.id}`)
+    if (i == 'acik') {
+       const küfür = ["amk","piç"];
+        if (küfür.some(word => msg.content.includes(word))) {
+          try {
+            if (!msg.member.hasPermission("BAN_MEMBERS")) {
+                  msg.delete();
+                    return msg.reply('no Küfür').then(msg => msg.delete(3000));
+    
+
+  msg.delete(3000);                              
+
+            }              
+          } catch(err) {
+            console.log(err);
+          }
+        }
+    }
+    else if (i == 'kapali') {
+      
+    }
+    if (!i) return;
+  });
+// ARGO \\
+
+// TAG \\
+client.on("userUpdate", async(eski, yeni) => {
+  if(eski.username !== yeni.username) {
+  if(!yeni.username.includes("™") && client.guilds.get("703377662743412786").members.get(yeni.id).roles.has("ROL İD")) {
+     client.guilds.get("703377662743412786").members.get(yeni.id).removeRole("ROL İD")
+     client.channels.get('706438740184268821').send(`:broken_heart: ${yeni}, TAG tagını çıkardı!`)
+    }
+     if(yeni.username.includes("™") && !client.guilds.get("703377662743412786").members.get(yeni.id).roles.has("ROL İD")) {
+      client.channels.get('706438740184268821').send(`:heart: ${yeni}, TAG tagını aldı!`)
+      client.guilds.get("703377662743412786").members.get(yeni.id).addRole("ROL ID")
+     }
+  }
+  })
+// TAG \\
