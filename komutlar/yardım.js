@@ -25,7 +25,25 @@ module.exports.run = async (bot, message, args) => {
           `İşlem onaylandı! Müzik Durduruldu.`
         );
 
-        db.delete(`davet_${message.author.id}_${message.guild.id}`);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
       }
     });
   });
