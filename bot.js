@@ -17,6 +17,7 @@ client.on("message", message => {
 		message.channel.send(langFile["deneme_başarılı"]);
 	}
 	if (message.content == "dil") {
+    let guild;
 		db.has(`lang.${guild.id}`) ? db.get(`lang.${guild.id}`) == "en" ? db.set(`lang.${guild.id}`, "tr") : db.set(`lang.${guild.id}`, "en") : db.set(`lang.${guild.id}`, "en");
 		message.channel.send(langFile["dil_degisti"]);
 	}
