@@ -117,8 +117,12 @@ client.on("message", message => {
 	if (message.content == "deneme") {
 		message.channel.send(langFile["deneme_başarılı"]);
 	}
-	if (message.content == "dil") {
-		db.has(`lang.${message.guild.id}`) ? db.get(`lang.${message.guild.id}`) == "en" ? db.set(`lang.${message.guild.id}`, "tr") : db.set(`lang.${message.guild.id}`, "en") : db.set(`lang.${message.guild.id}`, "en");
+	if (message.content == "dil tr") {
+		db.set(`lang.${message.guild.id}`, "tr");
+		message.channel.send(langFile["dil_degisti"]);
+	}
+  if (message.content == "dil en") {
+		db.set(`lang.${message.guild.id}`, "en");
 		message.channel.send(langFile["dil_degisti"]);
 	}
 
@@ -128,7 +132,7 @@ function returnLangFile(guild) {
   let dili;
   let dil = db.fetch(`teyit.${dili}`);  
 
-  let lang = database.has(`lang.${guild.id}`) ? database.get(`lang.${guild.id}`): db.get(`lang.${guild.id}`) ;
+  let lang = db.get(`lang.${guild.id}`) ;
   if (lang != "en" && lang != "tr") lang = "tr";
   switch (lang) {
     case "tr":
