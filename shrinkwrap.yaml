@@ -50,6 +50,7 @@ dependencies:
   moment-timezone: 0.5.28
   mongodb: 3.5.5
   ms: 2.1.2
+  multi-lang: 0.1.2
   node-google-translate-skidz: 1.1.2
   node-opus: 0.3.3
   node-superfetch: 0.1.10
@@ -2712,6 +2713,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
+  /multi-lang/0.1.2:
+    dev: false
+    resolution:
+      integrity: sha1-h0qxRyK3eHa3pROFHeRQChMrch4=
   /mysql/2.18.1:
     dependencies:
       bignumber.js: 9.0.0
@@ -4603,6 +4608,7 @@ specifiers:
   moment-timezone: ^0.5.23
   mongodb: ^3.1.11
   ms: ^2.1.1
+  multi-lang: ^0.1.2
   node-google-translate-skidz: ^1.1.2
   node-opus: ^0.3.1
   node-superfetch: ^0.1.9

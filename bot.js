@@ -1,12 +1,12 @@
+const { Client } = require("discord.js");
+const BookmanDB = require("bookman");
+const client = new Client();
+const database = new BookmanDB("langData");
 const Discord = require('discord.js');
-const client = new Discord.Client();
 const ayarlar = require('./ayarlar.json');
 const chalk = require('chalk');
 const fs = require('fs');
 const moment = require('moment');
-const { Client } = require("discord.js");
-const BookmanDB = require("bookman");
-const database = new BookmanDB("langData");
 const db = require("quick.db");
 require('./util/eventLoader')(client);
 
@@ -118,8 +118,7 @@ client.on("message", message => {
 		message.channel.send(langFile["deneme_başarılı"]);
 	}
 	if (message.content == "dil") {
-		db.has(`lang.${message.guild.id}`) ? db.get(`lang.${message.guild.id}`) == "en" 
-      ? db.set(`lang.${message.guild.id}`, "tr") : db.set(`lang.${message.guild.id}`, "en") : db.set(`lang.${message.guild.id}`, "en");
+		db.has(`lang.${message.guild.id}`) ? db.get(`lang.${message.guild.id}`) == "en" ? db.set(`lang.${message.guild.id}`, "tr") : db.set(`lang.${message.guild.id}`, "en") : db.set(`lang.${message.guild.id}`, "en");
 		message.channel.send(langFile["dil_degisti"]);
 	}
 

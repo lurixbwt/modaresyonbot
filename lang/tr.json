@@ -1,5 +1,10 @@
 {
-	"test_mesajı": "Test başarılı!",
-	"deneme_başarılı": "Deneme başarılı!",
-	"dil_degisti": "Dil başarıyla değişti"
+  "simpleIntro": {
+    "tr": "Hello I'm %{name}",
+    "en": "سلام اسم من %{name}"
+  },
+  "intro": {
+    "tr": "Hello my name is %{name}, I'm %{age} years old!",
+    "en": "سلام اسم من %{name}است، سن من %{age}"
+  }
 }
