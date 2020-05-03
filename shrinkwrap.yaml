@@ -85,6 +85,7 @@ dependencies:
   twitter: 1.7.1
   url: 0.11.0
   useful-tools: 0.2.6
+  user-instagram: 2.0.8
   weather-js: 2.0.0
   winston: 3.2.1
   ytdl-core: 0.29.7
@@ -592,6 +593,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-wMHVg2EOHaMRxbzgFJ9gtjOOCrI80OHLG14rxi28XwOW8ux6IiEbRCGGGqCtdAIg4FQCbW20k9RsT4y3gJlFug==
+  /axios/0.19.2:
+    dependencies:
+      follow-redirects: 1.5.10
+    dev: false
+    resolution:
+      integrity: sha512-fjgm5MvRHLhx+osE2xoekY70AhARk3a6hkN+3Io1jc00jtquGvxYlKlsFUhmUET0V5te6CcZI7lcv2Ym61mjHA==
   /bad-words/3.0.3:
     dependencies:
       badwords-list: 1.0.0
@@ -1740,6 +1747,14 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha512-aAWcW57uxVNrQZqFXjITpW3sIUQmHGG3qSb9mUah9MgMC4NeWhNOlNjXEYq3HjRAvL6arUviZGGJsBg6z0zsWA==
+  /follow-redirects/1.5.10:
+    dependencies:
+      debug: 3.1.0
+    dev: false
+    engines:
+      node: '>=4.0'
+    resolution:
+      integrity: sha512-0V5l4Cizzvqt5D44aTXbFZz+FtyXV1vrDN6qrelxtfYQKW0KO0W2T/hkE8xvGa/540LkZlkaUjO4ailYTFtHVQ==
   /forever-agent/0.6.1:
     dev: false
     resolution:
@@ -4282,6 +4297,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-MKTYzAJd3q10Lfpy4r/dLSeyK/iqLfuZtdVNRBg875h8vx82dERIiP8ep2hoJkTVf/jatXCRSjksJUy8ZX9jMA==
+  /user-instagram/2.0.8:
+    dependencies:
+      axios: 0.19.2
+    dev: false
+    resolution:
+      integrity: sha512-3CQ/qgJpaj/xt1SLNM3T1HKmI6VBp/EsqZqalGfKHRhDVID++wY4MCS6iEVFle19zGHGq/p8zyyooRoXAzyVOg==
   /utif/2.0.1:
     dependencies:
       pako: 1.0.11
@@ -4599,6 +4620,7 @@ specifiers:
   twitter: ^1.7.1
   url: ^0.11.0
   useful-tools: ^0.2.6
+  user-instagram: ^2.0.8
   weather-js: ^2.0.0
   winston: ^3.2.1
   ytdl-core: ^0.29.0

@@ -1,64 +1,199 @@
-const Discord = require("discord.js");
-const db = require("quick.db");
-module.exports.run = async (bot, message, args) => {
-  let prefix = (await db.fetch(`prefix_${message.guild.id}`)) || "!";
+const Discord = require('discord.js')
+const hash = require('../hash.json')
+exports.run = async (client ,message ) => {
+  
+  let guild = "668875487657066516"
+  
+ const voiceChannels = message.guild.channels.filter(c => c.type === 'voice');
+  let count = 0;
+  /////////////////////
+   var sessayı = count.toString().replace(/ /g, "    ")
+  var üs2 = sessayı.match(/([0-9])/g)
+  sessayı = sessayı.replace(/([a-zA-Z])/g, "bilinmiyor").toLowerCase()
+  if(üs2) {
+    sessayı = sessayı.replace(/([0-9])/g, d => {
+      return {
+      "1": "<a:say1:671365292961693736>",
+        "2": "<a:say2:671365295562293260>",
+        "3": "<a:say3:671365294609924107>",
+        "4": "<a:say4:671365292764692502>",
+        "5": "<a:say5:671365293028671536>",
+        "6": "<a:say6:671365294622507045>",
+        "7": "<a:say7:671365293343506442>",
+        "8": "<a:say8:671365295230681088>",
+        "9": "<a:say9:671365296396828697>",
+        "0": "<a:say0:671365294941274142>"}[d];
+      })
+    }
+  
+  
 
+  ///////////////////////////
+      var tag = message.guild.members.filter(member => member.user.username.includes("tag")).size.toString()
+      if(tag) {
+    tag = tag.replace(/([0-9])/g, d => {
+      return {
+      "1": "<a:say1:671365292961693736>",
+        "2": "<a:say2:671365295562293260>",
+        "3": "<a:say3:671365294609924107>",
+        "4": "<a:say4:671365292764692502>",
+        "5": "<a:say5:671365293028671536>",
+        "6": "<a:say6:671365294622507045>",
+        "7": "<a:say7:671365293343506442>",
+        "8": "<a:say8:671365295230681088>",
+        "9": "<a:say9:671365296396828697>",
+        "0": "<a:say0:671365294941274142>"}[d];
+      })
+    }
+      
+  
+  
+  /////////////////////////////////
+   var onlayn = message.guild.members.filter(m => m.presence.status !== "offline").size.toString().replace(/ /g, "    ")
+  var üs4= onlayn.match(/([0-9])/g)
+  onlayn = onlayn.replace(/([a-zA-Z])/g, "bilinmiyor").toLowerCase()
+  if(üs4) {
+    onlayn = onlayn.replace(/([0-9])/g, d => {
+      return {
+      "1": "<a:say1:671365292961693736>",
+        "2": "<a:say2:671365295562293260>",
+        "3": "<a:say3:671365294609924107>",
+        "4": "<a:say4:671365292764692502>",
+        "5": "<a:say5:671365293028671536>",
+        "6": "<a:say6:671365294622507045>",
+        "7": "<a:say7:671365293343506442>",
+        "8": "<a:say8:671365295230681088>",
+        "9": "<a:say9:671365296396828697>",
+        "0": "<a:say0:671365294941274142>"}[d];
+      })
+    }
+  
+  
+  
+  
+  //////////////////////////////    
+    var üyesayısı = message.guild.memberCount.toString().replace(/ /g,"")
+  var üs = üyesayısı.match(/([0-9])/g)
+  üyesayısı = üyesayısı.replace(/([a-zA-Z])/g, "bilinmiyor").toLowerCase()
+  if(üs) {
+    üyesayısı = üyesayısı.replace(/([0-9])/g, d => {
+      return {
+      "1": "<a:say1:671365292961693736>",
+        "2": "<a:say2:671365295562293260>",
+        "3": "<a:say3:671365294609924107>",
+        "4": "<a:say4:671365292764692502>",
+        "5": "<a:say5:671365293028671536>",
+        "6": "<a:say6:671365294622507045>",
+        "7": "<a:say7:671365293343506442>",
+        "8": "<a:say8:671365295230681088>",
+        "9": "<a:say9:671365296396828697>",
+        "0": "<a:say0:671365294941274142>"}[d];
+      })
+    }
+  
 
-  const embed = new Discord.RichEmbed()
-    .setColor("BLACK")
-    .setDescription(
-      ` Müziği Durdurmayı Onaylıyormusunuz?`
-    )
-  .setFooter(bot.user.username, bot.user.avatarURL)
-  message.channel.send(embed).then(async function(sentEmbed) {
-    const emojiArray = ["✅"];
-    const filter = (reaction, user) =>
-      emojiArray.includes(reaction.emoji.name) && user.id === message.author.id;
-    await sentEmbed.react(emojiArray[0]).catch(function() {});
-    var reactions = sentEmbed.createReactionCollector(filter, {
-      time: 30000
-    });
-    reactions.on("end", () => sentEmbed.edit("İşlem iptal oldu!"));
-    reactions.on("collect", async function(reaction) {
-      if (reaction.emoji.name === "✅") {
-        message.channel.send(
-          `İşlem onaylandı! Müzik Durduruldu.`
-        );
+  
+  //////////////////////////////////////
+    var boost = message.guild.members.filter(r=>r.roles.has("boost rol ıd")).size.toString() 
+  if(boost) {
+    boost = boost.replace(/([0-9])/g, d => {
+      return {
+      "1": "<a:say1:671365292961693736>",
+        "2": "<a:say2:671365295562293260>",
+        "3": "<a:say3:671365294609924107>",
+        "4": "<a:say4:671365292764692502>",
+        "5": "<a:say5:671365293028671536>",
+        "6": "<a:say6:671365294622507045>",
+        "7": "<a:say7:671365293343506442>",
+        "8": "<a:say8:671365295230681088>",
+        "9": "<a:say9:671365296396828697>",
+        "0": "<a:say0:671365294941274142>"}[d];
+      })
+    }
+      
+  
+  
+  
+ ////////////////////////////////////
+    var kadin = message.guild.members.filter(r=>r.roles.has("kadın rol ıd")).size.toString() 
+  if(kadin) {
+    kadin = kadin.replace(/([0-9])/g, d => {
+      return {
+      "1": "<a:say1:671365292961693736>",
+        "2": "<a:say2:671365295562293260>",
+        "3": "<a:say3:671365294609924107>",
+        "4": "<a:say4:671365292764692502>",
+        "5": "<a:say5:671365293028671536>",
+        "6": "<a:say6:671365294622507045>",
+        "7": "<a:say7:671365293343506442>",
+        "8": "<a:say8:671365295230681088>",
+        "9": "<a:say9:671365296396828697>",
+        "0": "<a:say0:671365294941274142>"}[d];
+      })
+    }
+ 
+/////////////////////////////////////////
+  var erkek = message.guild.members.filter(r=>r.roles.has(" erkek rol ıd")).size.toString() 
+  if(erkek) {
+   erkek = erkek.replace(/([0-9])/g, d => {
+      return {
+      "1": "<a:say1:671365292961693736>",
+        "2": "<a:say2:671365295562293260>",
+        "3": "<a:say3:671365294609924107>",
+        "4": "<a:say4:671365292764692502>",
+        "5": "<a:say5:671365293028671536>",
+        "6": "<a:say6:671365294622507045>",
+        "7": "<a:say7:671365293343506442>",
+        "8": "<a:say8:671365295230681088>",
+        "9": "<a:say9:671365296396828697>",
+        "0": "<a:say0:671365294941274142>"}[d];
+      })
+    }
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-      }
-    });
-  });
+/////////////////
+  var kayıtsız = message.guild.members.filter(r=>r.roles.has("kayıtsız rol ıd")).size.toString() 
+  if(kayıtsız) {
+    kayıtsız = kayıtsız.replace(/([0-9])/g, d => {
+      return {
+      "1": "<a:say1:671365292961693736>",
+        "2": "<a:say2:671365295562293260>",
+        "3": "<a:say3:671365294609924107>",
+        "4": "<a:say4:671365292764692502>",
+        "5": "<a:say5:671365293028671536>",
+        "6": "<a:say6:671365294622507045>",
+        "7": "<a:say7:671365293343506442>",
+        "8": "<a:say8:671365295230681088>",
+        "9": "<a:say9:671365296396828697>",
+        "0": "<a:say0:671365294941274142>"}[d];
+      })
+    }
+
+const eren = new Discord.RichEmbed()
+
+.setDescription(`
+**Kişi Sayısı** : **${üyesayısı.toString()}**
+**Aktif Üye** : **${onlayn}**
+**Sesli Üye** : **${sessayı}**
+
+**Booster Üye** : **${boost}**
+**Tagli Üye** : **${tag}**
+
+**Kız Üye** : **${kadin}**
+**Erkek Üye** : **${erkek}**
+
+**Kayıtsız Uye** : **${kayıtsız}**
+`)
+.setImage('https://media.discordapp.net/attachments/687702400756482057/688178907266154577/Eventual_Gif.gif')
+.setThumbnail(`https://media.discordapp.net/attachments/687702400756482057/688178907266154577/Eventual_Gif.gif`)
+message.channel.send(eren)
 };
-
-module.exports.conf = {
-  aliases: ["yardım"],
-  permLevel: 2,
+exports.conf = {
   enabled: true,
-  guildOnly: true,
-  kategori: "moderasyon"
+  guildOnly: false,
+  aliases: ['sb',],
+  permLevel: 0
 };
 
-module.exports.help = {
-  name: "yardım",
-  description: "davet-sıfırla",
-  usage: "yardım"
+exports.help = {
+  name: 'sunucubilgi',
 };
