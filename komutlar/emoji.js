@@ -3,8 +3,8 @@ const db = require('quick.db');
 
 exports.run = async(client, message) => {
     message.delete()
-const emoji = client.emojis.get('702138649151668284');
-message.channel.send(`${emoji}`);
+const emoji = client.emojis.get('706431800540659723');
+message.channel.send(`<@${message.author.id}> Şu Emojiyi Attırdı -> ${emoji}`);
                      
 }
 exports.conf = {

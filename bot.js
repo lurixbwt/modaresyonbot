@@ -142,3 +142,30 @@ function returnLangFile(guild) {
   }
 }
 // DIL \\
+
+// REKLAM \\
+client.on("message", async  msg => {
+ var i = await db.fetch(`reklam_${msg.guild.id}`)
+    if (i == 'acik') {
+       const reklam = [".com", ".net", ".xyz", ".tk", ".pw", ".io", ".me", ".gg", "www.", "https", "http", ".gl",".ga","cf", ".org", ".com.tr", ".biz", "net", ".rf.gd", ".az", ".party"];
+        if (reklam.some(word => msg.content.includes(word))) {
+          try {
+            if (!msg.member.hasPermission("BAN_MEMBERS")) {
+                  msg.delete();
+                    return msg.reply('no reklam').then(msg => msg.delete(3000));
+    
+
+  msg.delete(3000);                              
+
+            }              
+          } catch(err) {
+            console.log(err);
+          }
+        }
+    }
+    else if (i == 'kapali') {
+      
+    }
+    if (!i) return;
+  });
+// REKLAM \\
