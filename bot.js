@@ -142,9 +142,11 @@ function returnLangFile(guild) {
   }
 }
 // DIL \\
+
+// JAİL \\
 client.on("guildMemberAdd", async member => {
-  let cezalilar = db.get(`cezalilar2.${member.guild.id}`);
-  if (cezalilar.some(cezali => member.id === cezali.slice(1))) {
+  let cezalan = db.get(`ceza.${member.guild.id}`);
+  if (cezalan.some(cezali => member.id === cezali.slice(1))) {
     setTimeout(() => {
       member.setRoles(["706901136807952485"]);
     }, 2000);
