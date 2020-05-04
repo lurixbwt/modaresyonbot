@@ -18,8 +18,8 @@ exports.run = async(client, message, args) => {
       message.guild.unban(args[0])
       let x = args[0];
       
-      let veriflog = message.guild.channels.find(`name`, "log");      
-      client.fetchUser(args[0]).then(x => veriflog.send(new Discord.RichEmbed().setAuthor('Ban Kaldırıldı').setTimestamp().setColor("GREEN").setFooter(message.guild.name, message.guild.iconURL).setDescription(`**Banı Kaldırılan:** <@${x.id}> | ${x.id} \n**Banı Kaldıran:** ${message.author} | ${message.author.id}`)))
+      let log = message.guild.channels.find(`name`, "log");      
+      client.fetchUser(args[0]).then(x => log.send(new Discord.RichEmbed().setAuthor('Ban Kaldırıldı').setTimestamp().setColor("GREEN").setFooter(message.guild.name, message.guild.iconURL).setDescription(`**Banı Kaldırılan:** <@${x.id}> | ${x.id} \n**Banı Kaldıran:** ${message.author} | ${message.author.id}`)))
     } catch(err) { message.reply('Belirtilen ID numarasının banı kaldırılamadı!').then(x => x.delete(5000)) }
 };
 
