@@ -13,14 +13,17 @@ exports.run = async(client, message, args) => {
     db.push(`ceza.${message.guild.id}`, `a${LoZUye.id}`);
     message.channel.send(`${LoZUye} Adlı üye başarıyla cezalıya atıldı!`).then(m => m.delete(5000));
     
-    const logg = new Discord.RichEmbed()
-    .setDscription(`
-    Cezalıya Atılan Üye: ${LoZUye}
-    Cezalıya Atan Yetkili: <@${message.author.id}>
-    Cezalıya Atılma Sebebi: ${sebeb}`);
+  const sbb = new Discord.RichEmbed()
+  .setColor("RANDOM")
+  .setTitle("Kullanıcı Ceza Aldı!")
+  .addField(`Cezalıya Atılan Üye`, `${LoZUye}`)
+  .addField(`Cezalıya Atan Yetkili:`, `${message.author}`)
+  .addField(`Cezalıya Atılma Sebebi:`, `${sebeb}`)
+  .setTimestamp()
   
     let onay = message.guild.channels.find(`name`, "log")
-    onay.send(logg.id)
+    message.guild.channels.get(onay.id).send(sbb)
+
   
 };
 
@@ -33,7 +36,7 @@ exports.conf = {
 
 exports.help = { 
   name: 'jail', 
-  description: 'Cezalıya atar çıkarır.',
+  description: 'Cezalıya atar.',
   usage: 'jail',
   kategori: 'kullanıcı'
 };
