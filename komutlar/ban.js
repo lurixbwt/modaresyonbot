@@ -37,21 +37,9 @@ module.exports.run = async (bot, message, args) => {
     reactions.on("collect", async function(reaction) {
       if (reaction.emoji.name === "✅") {
         message.channel.send(
-          `İşlem onaylandı! ${u} adlı şahıs sunucudan yasaklandı!`,{
-            file: ""
-          });
-        
-    const log = new Discord.RichEmbed()
-      .setColor("RANDOM")
-      .setTitle("Kullanıcının Cezası Bitti!")
-      .addField(`Banlanan Üye:`, `${u}`)
-      .addField(`Banlayan Yetkili:`, `${message.author}`)
-      .setTimestamp()
-  
-    let onay = message.guild.channels.find(`name`, "ban-log-kanal-adı")
-    message.guild.channels.get(onay.id).send(log)
-        
-        
+          `İşlem onaylandı! ${u} adlı şahıs sunucudan yasaklandı!`
+        );
+
         message.guild.ban(u, 2);
       }
     });

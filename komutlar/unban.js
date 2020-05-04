@@ -16,7 +16,13 @@ exports.run = async(client, message, args) => {
     if(isNaN(args[0])) return message.reply('Banı kaldırılacak kullanıcının ID numarasını girmelisin!').then(x => x.delete(5000))
     try {
       message.guild.unban(args[0])
-      client.fetchUser(args[0]).then(x => )
+      client.fetchUser(args[0]).then(x => message.channel.send(
+        new Discord.RichEmbed()
+          .setAuthor('Ban Kaldırıldı')
+          .setTimestamp().setColor("GREEN")
+          .setFooter(message.guild.name, message.guild.iconURL)
+          .setDescription(`**Banı Kaldırılan:** ${x.tag} \n**Banı Kaldıran:** ${message.author} | ${message.author.id}`)
+      ))
       
       
     } catch(err) { message.reply('Belirtilen ID numarasının banı kaldırılamadı!').then(x => x.delete(5000)) }
