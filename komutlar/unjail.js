@@ -14,7 +14,7 @@ exports.run = async(client, message, args) => {
   }
   let LoZUye = message.mentions.members.first() || message.guild.members.get(args[0]);
   if (!LoZUye) return message.reply(`Cezalıya atılacak üyeyi belirtmelisin!`);
-  let cezaliRolu = ""; // CEZALI ROLÜNÜN ID
+  let cezaliRolu = "706901136807952485"; // CEZALI ROLÜNÜN ID
   const sebeb = args.slice(1).join(' ')
   let cezalilar = db.get(`ceza.${message.guild.id}`);
   cezalilar.filter(kisi => LoZUye.id !== kisi.slice(1));
@@ -23,15 +23,22 @@ exports.run = async(client, message, args) => {
     db.set(`ceza.${message.guild.id}`, cezalilar);
     message.channel.send(`${LoZUye} Adlı üye başarıyla cezası kaldırıldı!`).then(m => m.delete(5000));
     
+  const kod = "```fix";
+  const kod2 = "```";
   const log = new Discord.RichEmbed()
   .setColor("RANDOM")
   .setTitle("Kullanıcının Cezası Bitti!")
-  .addField(`Cezası Biten Üye`, `${LoZUye}`)
-  .addField(`Cezasını Bitiren Yetkili:`, `${message.author}`)
-  .addField(`Cezanın Bitme Sebebi:`, `${sebeb}`)
-  .setTimestamp()
+  .setDescription(`
+**Cezası Biten Üye:** ${LoZUye}
+**Cezasını Bitiren Yetkili:** ${message.author}
+
+**Neden Ceza Almıştı:** ${kod}
+${sebeb}${kod2}
+**Yetkili Not:** ${kod}
+asd{kod2}
+`)
   
-    let onay = message.guild.channels.find(`name`, "jail-log-kanal-adı")
+    let onay = message.guild.channels.find(`name`, "log")
     message.guild.channels.get(onay.id).send(log)
 
   

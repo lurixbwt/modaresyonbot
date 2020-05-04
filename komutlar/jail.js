@@ -27,14 +27,19 @@ exports.run = async(client, message, args) => {
     db.push(`ceza.${message.guild.id}`, `a${LoZUye.id}`);
     message.channel.send(`${LoZUye} Adlı üye başarıyla cezalıya atıldı!`).then(m => m.delete(5000));
     
+  const kod = "```fix";
+  const kod2 = "```";
   const log = new Discord.RichEmbed()
   .setColor("RANDOM")
   .setTitle("Kullanıcı Ceza Aldı!")
   .setDescription(`
-Cezalıya Atılan Üye: ${LoZUye}
-Cezalıya Atan Yetkili: ${message.author}
-Cezalıya Atılma Sebebi: ${sebeb}
-Verilen Süreç: ${sure} 
+**Cezalıya Atılan Üye:** ${LoZUye}
+**Cezalıya Atan Yetkili:** ${message.author}
+
+**Cezalıya Atılma Sebebi:** ${kod}
+${sebeb}${kod2}
+**Verilen Süreç:** ${kod}
+${sure}${kod2}
 `)
   let onay = message.guild.channels.find(`name`, "log")
   message.guild.channels.get(onay.id).send(log)
@@ -42,12 +47,15 @@ Verilen Süreç: ${sure}
   const log2 = new Discord.RichEmbed()
   .setColor("RANDOM")
   .setTitle("Kullanıcının Cezası Bitti!")
-  .addField(`Cezası Biten Üye`, `${LoZUye}`)
-  .addField(`Cezasını Bitiren Yetkili:`, `${message.author}`)
-  .addField(`Cezanın Bitme Sebebi:`, `${sebeb}`)
-  .addField(`Dolan Süre:`, `${sure}`)
-  .setTimestamp()
-  
+  .setDescription(`
+**Cezası Biten Üye:** ${LoZUye}
+**Cezasını Bitiren Yetkili:** ${message.author}
+
+**Neden Ceza Almıştı:** ${kod}
+${sebeb}${kod2}
+**Dolan Süre:** ${kod}
+${sure}${kod2}
+`)
 };
 
 exports.conf = {
