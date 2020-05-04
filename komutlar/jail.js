@@ -6,6 +6,7 @@ exports.run = async (client, message, args) => {
   let cezaliRolu = ""; // CEZALI ROLÜNÜN ID
   let cezalilar = db.get(`cezalilar.${message.guild.id}`);  
   
+  
 };
 
 exports.conf = {
