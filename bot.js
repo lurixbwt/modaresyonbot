@@ -212,18 +212,15 @@ client.on("userUpdate", async(eski, yeni) => {
   })
 // TAG \\
 
-
 // BOT OFFLINE KONTROL \\
 client.on("ready", async () => {
   setInterval(() => {
+   const resimler = ["https://i.pinimg.com/originals/e2/9a/28/e29a28e9c7f1b1fb28c8aadb921cd3e9.gif", "https://i.imgyukle.com/2018/05/14/n5ZIh.gif", "https://i.gifer.com/Tm0H.gif"]
+   const resim = resimler[Math.floor(Math.random()*resimler.length)];
     
-          const resimler = ["https://i.pinimg.com/originals/e2/9a/28/e29a28e9c7f1b1fb28c8aadb921cd3e9.gif", "https://i.imgyukle.com/2018/05/14/n5ZIh.gif", "https://i.gifer.com/Tm0H.gif"]
-        const resim = resimler[Math.floor(Math.random()*resimler.length)];
-        message.channel.send(`<@${message.author.id}> Adlı Üye Avatar İstedi.`, {
-          file: `${resim}`
-        });
-    
-  client.channels.get("700351796706803762").send(`[KORUMA] Bot Durumu: Online`)
-}, 300000)//milsaniye
+  client.channels.get("706775448427823108").send(``, {
+    file: `${resim}`
+  })
+}, 3000)//milsaniye
 })
 // BOT OFFLINE KONTROL \\
