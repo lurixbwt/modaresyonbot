@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args) => {
       .setDescription("```Ne yazık ki bu komutu kullanmaya yetkin yok.```")
       .setColor("BLACK");
 
-    message.channel.send(embed);
+    message.channel.send(embed).then(x => x.delete(5000));
     return;
   }
 
@@ -18,7 +18,7 @@ module.exports.run = async (bot, message, args) => {
         .setDescription("Lütfen sunucudan yasaklanacak kişiyi etiketleyiniz!")
         .setColor("BLACK")
         .setFooter(bot.user.username, bot.user.avatarURL)
-    );
+    ).then(x => x.delete(5000));
   }
 
   const embed = new Discord.RichEmbed()

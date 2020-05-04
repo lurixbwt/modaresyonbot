@@ -14,7 +14,7 @@ exports.run = async(client, message, args) => {
     return;
   }
   let LoZUye = message.mentions.members.first() || message.guild.members.get(args[0]);
-  if (!LoZUye) return message.reply(`Cezalıya atılacak üyeyi belirtmelisin!`);
+  if (!LoZUye) return message.reply(`Cezalıya atılacak üyeyi belirtmelisin!`).then(m => m.delete(5000));
   let cezaliRolu = "706901136807952485"; // CEZALI ROLÜNÜN ID
   const sure = args[1]; 
   const sebeb = args.slice(2).join(' ')
@@ -38,7 +38,7 @@ exports.run = async(client, message, args) => {
 
 **Cezalıya Atılma Sebebi:** ${kod}
 ${sebeb}${kod2}
-**Verilen Süreç:** ${kod}
+**Verilen Süreç:**${kod}
 ${sure}${kod2}
 `)
   let onay = message.guild.channels.find(`name`, "log")

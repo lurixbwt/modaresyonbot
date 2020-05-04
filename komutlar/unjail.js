@@ -13,9 +13,10 @@ exports.run = async(client, message, args) => {
     return;
   }
   let LoZUye = message.mentions.members.first() || message.guild.members.get(args[0]);
-  if (!LoZUye) return message.reply(`Cezalıya atılacak üyeyi belirtmelisin!`);
+  if (!LoZUye) return message.reply(`Cezalıya atılacak üyeyi belirtmelisin!`).then(m => m.delete(5000));
   let cezaliRolu = "706901136807952485"; // CEZALI ROLÜNÜN ID
   const sebeb = args.slice(1).join(' ')
+  if (!sebeb) return message.reply(`Yetkili Notu Eklemelisin`).then(m => m.delete(5000));
   let cezalilar = db.get(`ceza.${message.guild.id}`);
   cezalilar.filter(kisi => LoZUye.id !== kisi.slice(1));
   
@@ -32,10 +33,8 @@ exports.run = async(client, message, args) => {
 **Cezası Biten Üye:** ${LoZUye}
 **Cezasını Bitiren Yetkili:** ${message.author}
 
-**Neden Ceza Almıştı:** ${kod}
+**Yetkili Notu:** ${kod}
 ${sebeb}${kod2}
-**Yetkili Not:** ${kod}
-asd{kod2}
 `)
   
     let onay = message.guild.channels.find(`name`, "log")
