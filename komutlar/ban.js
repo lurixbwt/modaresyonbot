@@ -36,10 +36,8 @@ module.exports.run = async (bot, message, args) => {
     reactions.on("end", () => sentEmbed.edit("İşlem iptal oldu!"));
     reactions.on("collect", async function(reaction) {
       if (reaction.emoji.name === "✅") {
-        message.channel.send(
-          `İşlem onaylandı! ${u} adlı şahıs sunucudan yasaklandı!`
-        );
-
+        message.channel.send(`İşlem Onaylandı! ${u} Adlı Şahıs Sunucudan Banlandı!`);
+        message.channel.send(new Discord.RichEmbed().setAuthor('Ban Kaldırıldı').setTimestamp().setColor("GREEN").setFooter(message.guild.name, message.guild.iconURL).setDescription(`**Banı Kaldırılan:** ${u} | ${u.id} \n**Banı Kaldıran:** ${message.author} | ${message.author.id}`));
         message.guild.ban(u, 2);
       }
     });

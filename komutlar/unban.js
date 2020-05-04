@@ -16,9 +16,10 @@ exports.run = async(client, message, args) => {
     if(isNaN(args[0])) return message.reply('Banı kaldırılacak kullanıcının ID numarasını girmelisin!').then(x => x.delete(5000))
     try {
       message.guild.unban(args[0])
-      let veriflog = message.guild.channels.find(`name`, "🔺ᴋᴀʏıᴛʟᴀʀ");
-      veriflog.send(verifembed);
-      client.fetchUser(args[0]).then(x => message.channel.send(new Discord.RichEmbed().setAuthor('Ban Kaldırıldı').setTimestamp().setColor("GREEN").setFooter(message.guild.name, message.guild.iconURL).setDescription(`**Banı Kaldırılan:** ${x.tag} \n**Banı Kaldıran:** ${message.author} | ${message.author.id}`)))
+      let x = args[0];
+      
+      let veriflog = message.guild.channels.find(`name`, "log");      
+      client.fetchUser(args[0]).then(x => veriflog.send(new Discord.RichEmbed().setAuthor('Ban Kaldırıldı').setTimestamp().setColor("GREEN").setFooter(message.guild.name, message.guild.iconURL).setDescription(`**Banı Kaldırılan:** <@${x.id}> | ${x.id} \n**Banı Kaldıran:** ${message.author} | ${message.author.id}`)))
     } catch(err) { message.reply('Belirtilen ID numarasının banı kaldırılamadı!').then(x => x.delete(5000)) }
 };
 
@@ -34,16 +35,3 @@ exports.help = {
   description: 'Sunucudan ban kaldırmanızı sağlar.',
   usage: 'unban id/toplu',
 };
-let verifembed = new Discord.RichEmbed()
-        .setTitle("Teyit Çıktısı")
-        .setColor('#a5f23a')
-        .addField("Teyit Eden Kişi", `${message.author.tag}`, true)
-        .addField("Kanal", message.channel, true)
-        .addField("Teyit Olan Kişi", `${vUser}`, true)
-        .addField("Teyit Cinsiyeti", "Erkek", true)
-        .addField("Teyit Sayısı", `${teyitsayisi}`, true)
-        .addField("THE CYPHER EMPIRE", "Gururla Sunar...!", true)
-        .setTimestamp();
-      let veriflog = message.guild.channels.find(`name`, "🔺ᴋᴀʏıᴛʟᴀʀ");
-    if (!veriflog) return message.channel.send("Doğrulama Kullanıcı Log Kanalı bulunamadı. Lütfen '🔺ᴋᴀʏıᴛʟᴀʀ' Adlı Kanal Oluşturunuz.`");
-    veriflog.send(verifembed);
