@@ -7,18 +7,20 @@ exports.run = async(client, message, args) => {
   let LoZUye = message.mentions.members.first() || message.guild.members.get(args[0]);
   if (!LoZUye) return message.reply(`Cezalıya atılacak üyeyi belirtmelisin!`);
   let cezaliRolu = "706901136807952485"; // CEZALI ROLÜNÜN ID
-
-    LoZUye.addRole([cezaliRolu]);
+  const sebeb = args.slice(1).join('')
+  
+    LoZUye.addRole(cezaliRolu);
     db.push(`ceza.${message.guild.id}`, `a${LoZUye.id}`);
-    message.channel.send(`${LoZUye} Adlı üye başarıyla cezalıya atıldı!`);
+    message.channel.send(`${LoZUye} Adlı üye başarıyla cezalıya atıldı!`).then(m => m.delete(5000));
+    
+    const logg = new Discord.RichEmbed()
+    .setDscription(`
+    Cezalıya Atılan Üye: ${LoZUye}
+    Cezalıya Atan Yetkili: <@${message.author.id}>
+    Cezalıya Atılma Sebebi: ${sebeb}`);
   
-  
-    let d = "```";
-  
-    let
-  
-    const log = new Discord.RichEmbed()
-    .setDscription(`${d}`);
+    let onay = message.guild.channels.find(`name`, "log")
+    onay.send(logg.id)
   
 };
 
