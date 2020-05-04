@@ -15,7 +15,7 @@ exports.run = async(client, message, args) => {
   let LoZUye = message.mentions.members.first() || message.guild.members.get(args[0]);
   if (!LoZUye) return message.reply(`Cezalıya atılacak üyeyi belirtmelisin!`);
   let cezaliRolu = ""; // CEZALI ROLÜNÜN ID
-  const sebeb = args.slice(1).join('')
+  const sebeb = args.slice(1).join(' ')
   let cezalilar = db.get(`ceza.${message.guild.id}`);
   cezalilar.filter(kisi => LoZUye.id !== kisi.slice(1));
   
