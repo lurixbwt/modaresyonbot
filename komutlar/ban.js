@@ -1,60 +1,73 @@
-const Discord = require('discord.js');
-const db = require('quick.db');
+const Discord = require("discord.js");
+const db = require("quick.db");
+module.exports.run = async (bot, message, args) => {
+  let prefix = (await db.fetch(`prefix_${message.guild.id}`)) || "!";
+  if (!message.member.hasPermission("ADMINISTRATOR")) {
+    const embed = new Discord.RichEmbed()
+      .setDescription("```Ne yazık ki bu komutu kullanmaya yetkin yok.```")
+      .setColor("BLACK");
 
-exports.run = async (bot, message, args) => {
-    if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send(":no_entry: Bu komudu kullanabilmek için `Üyeleri Yasakla` yetkisine sahip olmanız gerek.");
-    let reason = args.slice(1).join(' ')
-    if (!args[0]) return message.channel.send("Kimi sunucudan banlamak **istersiniz?**")
-    let user = message.mentions.users.first() || bot.users.get(args[0]) || message.guild.members.find(u => u.user.username.toLowerCase().includes(args[0].toLowerCase())).user
+    message.channel.send(embed);
+    return;
+  }
 
-    if (!user) return message.channel.send(`${process.env.basarisiz} Etiketlediğin kullanıcıyı sunucuda bulamadım.`)
-    let member = message.guild.member(user)
-    if (!member) return message.channel.send(`${process.env.basarisiz} Etiketlediğin kullanıcıyı sunucuda bulamadım.`)
-    if (member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`${process.env.basarisiz} Kendi yetkimin üstündeki kişileri yasaklayamam.`)
-    if (!reason) reason = 'neden belirtilmemiş'
+  let u = message.mentions.users.first();
+  if (!u) {
+    return message.channel.send(
+      new Discord.RichEmbed()
+        .setDescription("Lütfen sunucudan yasaklanacak kişiyi etiketleyiniz!")
+        .setColor("BLACK")
+        .setFooter(bot.user.username, bot.user.avatarURL)
+    );
+  }
+
+  const embed = new Discord.RichEmbed()
+    .setColor("BLACK")
+    .setDescription(`${u} Adlı şahsın yasaklanmasını onaylıyor musunuz?`)
+    .setFooter(bot.user.username, bot.user.avatarURL);
+  message.channel.send(embed).then(async function(sentEmbed) {
+    const emojiArray = ["✅"];
+    const filter = (reaction, user) =>
+      emojiArray.includes(reaction.emoji.name) && user.id === message.author.id;
+    await sentEmbed.react(emojiArray[0]).catch(function() {});
+    var reactions = sentEmbed.createReactionCollector(filter, {
+      time: 30000
+    });
+    reactions.on("end", () => sentEmbed.edit("İşlem iptal oldu!"));
+    reactions.on("collect", async function(reaction) {
+      if (reaction.emoji.name === "✅") {
+        message.channel.send(
+          `İşlem onaylandı! ${u} adlı şahıs sunucudan yasaklandı!`,{
+            file: ""
+          });
+        
+    const log = new Discord.RichEmbed()
+      .setColor("RANDOM")
+      .setTitle("Kullanıcının Cezası Bitti!")
+      .addField(`Banlanan Üye:`, `${u}`)
+      .addField(`Banlayan Yetkili:`, `${message.author}`)
+      .setTimestamp()
   
-    message.channel.send(`\`${user.tag}\` adlı kişi sunucudan yasaklanacak? Kabul ediyorsanız **evet / e** etmiyorsanız **hayır / h** yazınız.`)
-        let uwu = false;
-            while (!uwu) {
-                const response = await message.channel.awaitMessages(neblm => neblm.author.id === message.author.id, { max: 1, time: 30000 });
-                const choice = response.first().content
-                if (choice == 'hayır' || choice == 'h') return message.channel.send('İşlem başarıyla **sonlandırıldı.**')
-                if (choice !== 'evet' && choice !== 'e') {
-                message.channel.send('Lütfen sadece **evet** veya **hayır** ile cevap verin.')
-                }
-                if (choice == 'evet' || choice == 'e') uwu = true
-                }
-                if (uwu) {
-                try {
-                await member.ban(reason + ` | Yetkili: ${message.author.tag} - ${message.author.id}`)
-  
-                message.channel.send(`**${user.tag}** adlı kullanıcı **${message.author.tag}** adlı yetkili tarafından **${reason}** sebebiyle sunucudan yasaklandı.`)
-                user.send(`**${message.guild.name}** adlı sunucudan **banlandınız!**\n*Sebep:* \`\`\`${reason}\`\`\``)
-
-                let embed = new Discord.RichEmbed()
-                    .setColor('BLUE')
-                    .setAuthor(`${user.username} adlı kişi yasaklandı!`, user.avatarURL||user.defaultAvatarURL)
-                    .addField('Yasaklanan Kullanıcı', `${user.tag}-[${user.id}]`, true)
-                    .addField('Yasaklayan Yetkili', `${message.author.tag}-[${message.author.id}]`, true)
-                    .addField('Yasaklama Nedeni', reason, true);
-                let membermodChannel = await db.fetch(`membermodChannel_${message.guild.id}`)
-                if (!message.guild.channels.get(membermodChannel)) return
-                else message.guild.channels.get(membermodChannel).send(embed)
-            } catch(e) {
-            message.channel.send(':warning: Bir hata var!')
-                  }
-    } else return console.log('Hata var')
-}
-
-exports.conf = {
-  enabled: true,
-  guildOnly: true,
-  aliases: [],
-  permLevel: 4
+    let onay = message.guild.channels.find(`name`, "ban-log-kanal-adı")
+    message.guild.channels.get(onay.id).send(log)
+        
+        
+        message.guild.ban(u, 2);
+      }
+    });
+  });
 };
 
-exports.help = {
-  name: 'ban',
-  description: 'nblm',
-  usage: 'ban'
+module.exports.conf = {
+  aliases: [],
+  permLevel: 2,
+  enabled: true,
+  guildOnly: true,
+  kategori: "moderasyon"
+};
+
+module.exports.help = {
+  name: "ban",
+  description: "ban",
+  usage: "ban"
 };
