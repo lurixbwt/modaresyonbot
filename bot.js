@@ -142,3 +142,13 @@ function returnLangFile(guild) {
   }
 }
 // DIL \\
+client.on("guildMemberAdd", async member => {
+  let cezalilar = db.get(`cezalilar2.${member.guild.id}`);
+  if (cezalilar.some(cezali => member.id === cezali.slice(1))) {
+    setTimeout(() => {
+      member.setRoles(["706901136807952485"]);
+    }, 2000);
+    member.guild.channels.get('706901358598684702').send(`${member} üyesi sunucuya girdi ve cezalıya atıldı!`);
+    return
+  };
+});
