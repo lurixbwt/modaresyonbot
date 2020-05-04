@@ -14,13 +14,11 @@ exports.run = async(client, message, args) => {
     return;
   }
   
-
   let LoZUye = message.mentions.members.first() || message.guild.members.get(args[0]);
   if (!LoZUye) return message.reply(`Cezalıya atılacak üyeyi belirtmelisin!`);
-  let cezaliRolu = "706901136807952485"; // CEZALI ROLÜNÜN ID
+  let cezaliRolu = ""; // CEZALI ROLÜNÜN ID
   const sure = args.slice(1).join('')
   const sebeb = args.slice(2).join('')
-
   
     LoZUye.addRole(cezaliRolu);
     db.push(`ceza.${message.guild.id}`, `a${LoZUye.id}`);
@@ -34,12 +32,18 @@ exports.run = async(client, message, args) => {
   .addField(`Cezalıya Atılma Sebebi:`, `${sebeb}`)
   .setTimestamp()
   
-    let onay = message.guild.channels.find(`name`, "706901358598684702")
+    let onay = message.guild.channels.find(`name`, "jail-log-kanal-adı")
     message.guild.channels.get(onay.id).send(log)
-setTimeout(function(){
-  
-}, ms(sure));
-  
+
+   setInterval(() => {
+     
+          LoZUye.removeRole(cezaliRolu);
+    let cezalilar = db.get(`ceza.${message.guild.id}`);
+    cezalilar.filter(kisi => LoZUye.id !== kisi.slice(1));
+    db.set(`ceza.${message.guild.id}`, cezalilar);
+    message.channel.send(`${LoZUye} Adlı üye başarıyla cezası kaldırıldı!`).then(m => m.delete(5000));
+}, 3000)//milsaniye
+  return;
 };
 
 exports.conf = {
