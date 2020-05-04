@@ -1,7 +1,9 @@
 const MessageAttachment = require('discord.js');
 exports.run = async (client, message) => {
-        message.channel.send(`<@${message.author.id}> Adlı Üye Selam Verdi.`, {
-          file: "https://appstickers-cdn.appadvice.com/1179987344/819903460/e2acb9440bac712b13e3d3f9ad20d909-10.gif"
+        const resimler = ["https://i.pinimg.com/originals/e2/9a/28/e29a28e9c7f1b1fb28c8aadb921cd3e9.gif", "https://i.imgyukle.com/2018/05/14/n5ZIh.gif", "https://i.gifer.com/Tm0H.gif"]
+        const resim = resimler[Math.floor(Math.random()*resimler.length)];
+        message.channel.send(`<@${message.author.id}> Adlı Üye Avatar İstedi.`, {
+          file: `${resim}`
         });
 };
 
@@ -12,7 +14,7 @@ exports.conf = {
 };
 
 exports.help = {
-  name: "sa",
+  name: "avatar",
   description: "Resim Attırma.",
-  usage: "sa",
+  usage: "avatar",
 };
