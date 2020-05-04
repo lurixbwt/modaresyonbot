@@ -1,42 +1,38 @@
 const Discord = require('discord.js');
-const db = require("quick.db");
+const ayarlar = require('../ayarlar.json');
+const ms = require('ms');
 
-exports.run = async (client, message, args) => {
-  let LoZUser = message.guild.member(message.mentions.users.first());
+exports.run = async(client, message, args, prefix, ayar, emoji) => {
+  // !sesmute @etiket 5m
+  let LoZUser = message.mentions.members.first();
+  let sure = args[1];
+  let sebep = args.slice(2).join(' ');
+  let logKanali = "706901358598684702"; // LOG KANALININ ID
   let cezaliRolu = "706901136807952485"; // CEZALI ROLÜNÜN ID
-  let geriverilcekrol = "706916260247502938" //UYE ROLÜ
-  let cezalilar = db.get(`cezalilar.${message.guild.id}`);  
-  let süreç = args.slice(1).join(' ').replace('gün'.toLowerCase(), 'd').replace('saat'.toLowerCase(), 'h').replace('dakika'.toLowerCase(), 'm').replace('saniye'.toLowerCase(), 's');
-
   
-  if (LoZUser.roles.has(cezaliRolu)) {
-    let cezalilar = db.get(`cezalilar.${message.guild.id}`);
-    cezalilar.filter(kisi => LoZUser.id !== kisi.slice(1));
-    db.set(`cezalilar.${message.guild.id}`, cezalilar);
-    LoZUser.setRoles([geriverilcekrol]);
-    message.reply('Belirtilen üye başarıyla cezalıdan çıkartıldı!');
-  } else {
-    LoZUser.setRoles([cezaliRolu]);
-    db.push(`cezalilar.${message.guild.id}`, `a${LoZUser.id}`);
-    message.reply('Belirtilen üye başarıyla cezalıya atıldı!');
-  };
-      setTimeout(function(){
-      yashinu.removeRole(rol.id);
-      yashinu.addRole(kayıtsızRolü);
-      message.channel.send(`**\`${yashinu.displayName}\`  adlı üyenin jail süresi sona erdiği için jaili kaldırıldı!**`).then(x => x.delete(10000))
-      embed.setAuthor("Jail Sona Erdi", client.user.avatarURL)
-      embed.setDescription(`**Üye:** ${yashinu} | ${yashinu.id} \n**Süre:** ${süre} \n**Yetkili:** ${message.author} | ${message.author.id}`)
-    client.channels.get(logYashinu).send(embed)
-    }, ms(süre));
+  if(!sure){
+  if (!LoZUser || !sure || !sebep) return message.reply('Doğru kullanmalısın!\n' +this.help.usage);
+  LoZUser.addRole(cezaliRolu);
+  message.channel.send(`${LoZUser.displayName} adlı üye ses kanalında **${sure}** kadar susturuldu!`);
+  client.channels.get(logKanali).send(`${LoZUser} adlı üye ses kanalında **${sure}** kadar, **${sebep}** nedeniyle susturuldu!`);
+   } else {
+  setTimeout(() => {
+    LoZUser.removeRole(cezaliRolu);
+    message.channel.send(`${LoZUser.displayName} adlı üyenin ses susturması kaldırıldı!`);
+    client.channels.get(logKanali).send(`${LoZUser.displayName} adlı üyenin ses susturması kaldırıldı!`);
+  }, ms(sure));}
+};
 
 exports.conf = {
   enabled: true,
+  guildOnly: true,
   aliases: [],
-  permLevel: 0,
+  permLevel: 0
 };
 
-exports.help = {
-  name: "jail",
-  description: "Resim Attırma.",
-  usage: "jail",
+exports.help = { 
+  name: 'jail', 
+  description: 'Sesmute.',
+  usage: 'jail @üye süre sebep',
+  kategori: 'kullanıcı'
 };
