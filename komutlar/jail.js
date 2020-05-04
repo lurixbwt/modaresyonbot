@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 const ayarlar = require('../ayarlar.json');
 const db = require('quick.db');
-const ms = require('ms');
 
 exports.run = async(client, message, args) => {
   // !cezalı @etiket
@@ -13,12 +12,10 @@ exports.run = async(client, message, args) => {
     message.channel.send(embed);
     return;
   }
-  
   let LoZUye = message.mentions.members.first() || message.guild.members.get(args[0]);
   if (!LoZUye) return message.reply(`Cezalıya atılacak üyeyi belirtmelisin!`);
   let cezaliRolu = ""; // CEZALI ROLÜNÜN ID
-  const sure = args.slice(1).join('')
-  const sebeb = args.slice(2).join('')
+  const sebeb = args.slice(1).join('')
   
     LoZUye.addRole(cezaliRolu);
     db.push(`ceza.${message.guild.id}`, `a${LoZUye.id}`);
@@ -35,15 +32,7 @@ exports.run = async(client, message, args) => {
     let onay = message.guild.channels.find(`name`, "jail-log-kanal-adı")
     message.guild.channels.get(onay.id).send(log)
 
-   setInterval(() => {
-     
-          LoZUye.removeRole(cezaliRolu);
-    let cezalilar = db.get(`ceza.${message.guild.id}`);
-    cezalilar.filter(kisi => LoZUye.id !== kisi.slice(1));
-    db.set(`ceza.${message.guild.id}`, cezalilar);
-    message.channel.send(`${LoZUye} Adlı üye başarıyla cezası kaldırıldı!`).then(m => m.delete(5000));
-}, 3000)//milsaniye
-  return;
+  
 };
 
 exports.conf = {
