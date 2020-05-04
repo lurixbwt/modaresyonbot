@@ -154,3 +154,4 @@ client.on("guildMemberAdd", async member => {
     return
   };
 });
+// JAİL \\
