@@ -13,7 +13,7 @@ exports.run = async(client, message, args) => {
   }
   let LoZUye = message.mentions.members.first() || message.guild.members.get(args[0]);
   if (!LoZUye) return message.reply(`Cezalıya atılacak üyeyi belirtmelisin!`).then(m => m.delete(5000));
-  let cezaliRolu = "706901136807952485"; // CEZALI ROLÜNÜN ID
+  let cezaliRolu = "CEZALI ROL ID"; // CEZALI ROLÜNÜN ID
   const sebeb = args.slice(1).join(' ')
   if (!sebeb) return message.reply(`Yetkili Notu Eklemelisin`).then(m => m.delete(5000));
   let cezalilar = db.get(`ceza.${message.guild.id}`);
@@ -29,14 +29,14 @@ exports.run = async(client, message, args) => {
   .setColor("RANDOM")
   .setTitle("Kullanıcının Cezası Bitti!")
   .setDescription(`
-**Cezası Biten Üye:** ${LoZUye}
-**Cezasını Bitiren Yetkili:** ${message.author}
+**Jail Biten Üye:** ${LoZUye}
+**Jail Bitiren Yetkili:** ${message.author}
 
 **Yetkili Notu:** ${kod}
 ${sebeb}${kod2}
 `)
   
-    let onay = message.guild.channels.find(`name`, "log")
+    let onay = message.guild.channels.find(`name`, "KANAL LOG ADI")
     message.guild.channels.get(onay.id).send(log)
 
   

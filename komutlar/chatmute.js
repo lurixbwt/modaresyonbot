@@ -53,7 +53,7 @@ ${kod}
 Verilen Süre: ${lozZaman} ${kod2}`)
                 .setColor("RANDOM");
   message.channel.send(`${message.author} Başarılı Bir Şekilde ${lozÜye} Susturuldu.`);
-  let onay = message.guild.channels.find(`name`, "log")
+  let onay = message.guild.channels.find(`name`, "KANAL LOG ADI")
   message.guild.channels.get(onay.id).send(embed)
   
   setTimeout(function(){
@@ -66,9 +66,9 @@ Susturulmasını Kaldıran Yetkili: ${message.author}
 ${kod}
 Susturulma Sebebi:${sebep} ${kod2}
 ${kod}
-Verilen Süre: ${lozZaman} ${kod2}`)
+Dolan Süre: ${lozZaman} ${kod2}`)
                 .setColor("RANDOM");
-  let onay = message.guild.channels.find(`name`, "log")
+  let onay = message.guild.channels.find(`name`, "KANAL LOG ADI")
   message.guild.channels.get(onay.id).send(sembed)
   }, ms(lozZaman));
 
