@@ -16,7 +16,7 @@ exports.run = async(client, message, args) => {
   if (!LoZUye) return message.reply(`Cezalıya atılacak üyeyi belirtmelisin!`).then(m => m.delete(5000));
   let cezaliRolu = "706901136807952485"; // CEZALI ROLÜNÜN ID
   const sure = args[1];
-  if(!sure) return message.channel.send("Lütfen doğru bir zaman dilimi giriniz. Örneğin: ***!sustur @kişi 1s/m/h/d sebep**");
+  if(!sure) return message.channel.send("Lütfen doğru bir zaman dilimi giriniz. Örneğin: ***!jail @kişi 1s/m/h/d sebep**");
 
   const sebeb = args.slice(2).join(' ')
   
