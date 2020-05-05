@@ -45,12 +45,13 @@ module.exports.run = async (client, message, args) => {
    let embed = new Discord.RichEmbed()
               .setTitle("Kullanıcı Chat Cezası Aldı")
                 .setDescription(`
-Susturulan Üye: ${lozÜye}
-Susturan Yetkili: ${message.author}
-${kod}
-Susturulma Sebebi:${sebep} ${kod2}
-${kod}
-Verilen Süre: ${lozZaman} ${kod2}`)
+**Susturulan Üye:** ${lozÜye}
+**Susturan Yetkili:** ${message.author}
+
+**Susturulma Sebebi:** ${kod}
+${sebep} ${kod2}
+**Verilen Süre:** ${kod}
+${lozZaman} ${kod2}`)
                 .setColor("RANDOM");
   message.channel.send(`${message.author} Başarılı Bir Şekilde ${lozÜye} Susturuldu.`);
   let onay = message.guild.channels.find(`name`, "KANAL LOG ADI")
@@ -61,12 +62,13 @@ Verilen Süre: ${lozZaman} ${kod2}`)
     let sembed =  new Discord.RichEmbed()
               .setTitle("Kullanıcı Chat Cezası Kalktı")
                 .setDescription(`
-Susturulması Kalkan Üye: ${lozÜye}
-Susturulmasını Kaldıran Yetkili: ${message.author}
-${kod}
-Susturulma Sebebi:${sebep} ${kod2}
-${kod}
-Dolan Süre: ${lozZaman} ${kod2}`)
+**Susturulması Kalkan Üye:** ${lozÜye}
+**Susturulmasını Kaldıran Yetkili:** ${message.author}
+
+**Susturulma Sebebi:** ${kod}
+${sebep} ${kod2}
+**Dolan Süre:** ${kod}
+${lozZaman} ${kod2}`)
                 .setColor("RANDOM");
   let onay = message.guild.channels.find(`name`, "KANAL LOG ADI")
   message.guild.channels.get(onay.id).send(sembed)

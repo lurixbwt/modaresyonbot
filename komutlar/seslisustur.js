@@ -26,12 +26,13 @@ let kullanici = message.mentions.members.first() || message.guild.members.get(ar
   let embed =  new Discord.RichEmbed()
               .setTitle("Kullanıcı Ses Cezası Aldı")
                 .setDescription(`
-Susturulan Üye: ${kullanici}
-Susturan Yetkili: ${message.author}
-${kod}
-Susturulma Sebebi:${sebep} ${kod2}
-${kod}
-Verilen Süre: ${süre} ${kod2}`)     
+**Susturulan Üye:** ${kullanici}
+**Susturan Yetkili:** ${message.author}
+
+**Susturulma Sebebi:** ${kod}
+${sebep} ${kod2}
+**Verilen Süre:** ${kod}
+${süre} ${kod2}`)       
               .setColor("RANDOM");
   kullanici.setMute(true, `Susturan yetkili: ${message.author.tag} - Susturma süresi: ${süre} ms`)
               .then(() => message.channel.send(` ${süre} süreliğine  ${message.author}  tarafından ${sebep} sebebiyle susturuldu!`)).catch(console.error);
@@ -43,12 +44,13 @@ Verilen Süre: ${süre} ${kod2}`)
           let sembed =  new Discord.RichEmbed()
               .setTitle("Kullanıcı Ses Cezası Kalktı")
                 .setDescription(`
-Susturması Kalkan Üye: ${kullanici}
-Susturan Yetkili: ${message.author}
-${kod}
-Susturulma Sebebi:${sebep} ${kod2}
-${kod}
-Dolan Süre: ${süre} ${kod2}`)  
+**Susturması Kalkan Üye:** ${kullanici}
+**Susturan Yetkili:** ${message.author}
+
+**Susturulma Sebebi:** ${kod}
+${sebep} ${kod2}
+**Dolan Süre:** ${kod}
+${süre} ${kod2}`)  
                 .setColor("RANDOM");
           let onay = message.guild.channels.find(`name`, "KANAL LOG ADI")
           message.guild.channels.get(onay.id).send(sembed)
