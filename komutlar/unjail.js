@@ -3,7 +3,6 @@ const ayarlar = require('../ayarlar.json');
 const db = require('quick.db');
 
 exports.run = async(client, message, args) => {
-  // !cezalı @etiket
   if (!message.member.hasPermission("ADMINISTRATOR")) {
     const embed = new Discord.RichEmbed()
       .setDescription("```Ne yazık ki bu komutu kullanmaya yetkin yok.```")
